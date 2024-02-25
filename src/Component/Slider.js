@@ -1,5 +1,5 @@
 import { Button, Container, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import im from '../Media/pexels-pavel-danilyuk-6161372 (1080p).png';
 import '../App.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,7 +14,13 @@ export default function Slider() {
       color: #C71B1B;
     }
   `;
-
+  let sectionElement='form';
+  useEffect(()=>{    
+     sectionElement = document.getElementById('form');      
+},[])
+  const handleClick = () => {
+    sectionElement.scrollIntoView({ behavior: 'smooth' });
+};
   return (
     <div style={{ minHeight: '500px', position: 'relative',backgroundColor:'black' }}>
       <style>{swiperStyles}</style>
@@ -42,7 +48,7 @@ export default function Slider() {
               position: 'absolute',
               top: '70%',
               left: '14vh',
-            }}
+            }} onClick={handleClick}
           >
             START NOW
           </Button>
@@ -63,7 +69,7 @@ export default function Slider() {
               position: 'absolute',
               top: '70%',
               left: '14vh',
-            }}
+            }} onClick={handleClick}
           >
             START NOW
           </Button>

@@ -123,3 +123,73 @@
 
   
  
+
+
+
+
+
+
+
+  .card-container {
+    background-color: #141414;
+    border-radius: 5px;
+    color: white;
+    padding-top: 30px;
+    position: relative;
+    width: 250px;
+    text-align: center;
+    border: 2px solid #9F0202;
+    padding: 20px;
+    min-height: 300px;
+    border-radius: 20px;
+  }
+  
+ 
+  
+
+  .custom-swiper .swiper-scrollbar {
+    background-color: rgba(186, 186, 186, 0.616);
+  }
+  
+  .custom-swiper .swiper-scrollbar-drag {
+    background-color: white;
+  }
+
+
+
+
+
+  .custom-swiper .swiper-pagination-bullet {
+    background-color: white;
+  }
+  
+  .custom-swiper .swiper-pagination-bullet-active {
+    background-color: white;
+  }
+  
+ 
+
+
+  .custom-textarea{
+    background-color: transparent;
+    border: 1px solid white;
+    padding:10px 1px 1px 12px;
+    border-radius: 5px;
+    color: white;
+    max-height: 400px;
+  }
+  .custom-textarea::placeholder {
+    color: white;
+    font-size:13px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .flag-dropdown{
+    background-color: transparent !important;
+  }
+  .react-tel-input ::placeholder{
+    color: white;
+  }
+
+
+ 
