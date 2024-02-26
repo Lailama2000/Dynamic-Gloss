@@ -40,7 +40,7 @@ loop={true}
 >
                 <SwiperSlide>
       <div class="card-container">
-	<img  src={pic} alt="user" style={{borderRadius:'100%'}}/><br/>
+	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
     <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
 	<p>“Moe’s attention to detail is
     unmatched. <br/> In the finished” </p>
@@ -50,7 +50,7 @@ loop={true}
 
 <SwiperSlide>
       <div class="card-container">
-	<img  src={pic} alt="user" style={{borderRadius:'100%'}}/><br/>
+	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
     <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
 	<p>“Moe’s attention to detail is
     unmatched. <br/> In the finished” </p>
@@ -59,7 +59,7 @@ loop={true}
 </SwiperSlide>
 <SwiperSlide>
       <div class="card-container">
-	<img  src={pic} alt="user" style={{borderRadius:'100%'}}/><br/>
+	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
     <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
 	<p>“Moe’s attention to detail is
     unmatched. <br/> In the finished” </p>
@@ -68,7 +68,7 @@ loop={true}
 </SwiperSlide>
          <SwiperSlide>
       <div class="card-container">
-	<img  src={pic} alt="user" style={{borderRadius:'100%'}}/><br/>
+	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
     <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
 	<p>“Moe’s attention to detail is
     unmatched. <br/> In the finished” </p>

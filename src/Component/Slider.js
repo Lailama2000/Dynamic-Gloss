@@ -1,6 +1,6 @@
-import { Button, Container, Typography } from '@mui/material';
+import { Button, Container, Typography, useMediaQuery } from '@mui/material';
 import React, { useEffect } from 'react';
-import im from '../Media/pexels-pavel-danilyuk-6161372 (1080p).png';
+import im from '../Media/imgggg.png';
 import '../App.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -9,11 +9,18 @@ import 'swiper/css/navigation';
 
 export default function Slider() {
   const swiperStyles = `
+  @media (max-width: 500px) {
     .swiper-button-next,
     .swiper-button-prev {
-      color: #C71B1B;
+      display: none;
     }
-  `;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #C71B1B;
+  }
+`;
   let sectionElement='form';
   useEffect(()=>{    
      sectionElement = document.getElementById('form');      
@@ -21,8 +28,10 @@ export default function Slider() {
   const handleClick = () => {
     sectionElement.scrollIntoView({ behavior: 'smooth' });
 };
+const matches = useMediaQuery('(min-width:500px)');
+
   return (
-    <div style={{ minHeight: '500px', position: 'relative',backgroundColor:'black' }}>
+    <div style={{ minHeight: '500px', position: 'relative',backgroundColor:'black',marginTop:'50px' }}>
       <style>{swiperStyles}</style>
       <Swiper modules={[Autoplay,Navigation]} 
        autoplay={{
@@ -30,13 +39,16 @@ export default function Slider() {
         disableOnInteraction: false,
       }}
       slidesPerView={1} 
-      navigation 
+      navigation
       style={{ width: '100%' }}>
-        <SwiperSlide style={{ width: '100%' }}>
-          <img style={{ height: '500px', width: '100%', objectFit: 'cover' }} src={im} />
+        <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, minHeight: '500px'
+       ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%' }}>
+          {/* <img style={{ height: '500px', width: '100%', objectFit: 'cover' }} src={im} /> */}
           <div className='overlay'></div>
-          <Typography sx={{ color: 'white', position: 'absolute', top: '47%', left: '10vh', fontSize: '25px' }}>
-            <Container maxWidth='xs'>Check out our unbeatable prices and offers!</Container>
+          <Typography sx={{ color: 'white', position:'relative', marginTop: matches?'25%':'80%',
+           marginRight: matches?'53%':'', fontSize: '25px' }}>
+            <Container maxWidth='xs'>Check out our unbeatable prices and offers!
+           </Container>
           </Typography>
           <Button
             sx={{
@@ -45,19 +57,22 @@ export default function Slider() {
               '&:hover': { color: 'white', bgcolor: '#C71B1B' },
               padding: '5px',
               width: '190px',
-              position: 'absolute',
-              top: '70%',
-              left: '14vh',
+              position: 'relative',
+              marginTop: '2%',
+              marginLeft: matches?'16vh':'2vh',
             }} onClick={handleClick}
           >
             START NOW
           </Button>
         </SwiperSlide>
-        <SwiperSlide>
-          <img style={{ height: '500px', width: '100%', objectFit: 'cover' }} src={im} />
+        <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, minHeight: '500px'
+       ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%' }}>
+          {/* <img style={{ height: '500px', width: '100%', objectFit: 'cover' }} src={im} /> */}
           <div className='overlay'></div>
-          <Typography sx={{ color: 'white', position: 'absolute', top: '47%', left: '10vh', fontSize: '25px' }}>
-            <Container maxWidth='xs'>Check out our unbeatable prices and offers!</Container>
+          <Typography sx={{ color: 'white', position:'relative', marginTop: matches?'25%':'80%',
+           marginRight: matches?'53%':'', fontSize: '25px' }}>
+            <Container maxWidth='xs'>Check out our unbeatable prices and offers!
+           </Container>
           </Typography>
           <Button
             sx={{
@@ -66,9 +81,9 @@ export default function Slider() {
               '&:hover': { color: 'white', bgcolor: '#C71B1B' },
               padding: '5px',
               width: '190px',
-              position: 'absolute',
-              top: '70%',
-              left: '14vh',
+              position: 'relative',
+              marginTop: '2%',
+              marginLeft: matches?'16vh':'2vh',
             }} onClick={handleClick}
           >
             START NOW

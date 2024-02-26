@@ -38,7 +38,7 @@ function Navbar() {
 
 
   return (
-    <AppBar position="static" sx={{bgcolor:'#000000',borderBottom:'3px solid #C71B1B'}}>
+    <AppBar position="fixed" sx={{bgcolor:'#000000',borderBottom:'3px solid #C71B1B'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -49,7 +49,7 @@ function Navbar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              padding:'30px'
+              padding:'20px'
             }}
           >
             <img src={logo} style={{width:'100px',height:'50px',objectFit:'contain'}}/>
@@ -108,7 +108,7 @@ function Navbar() {
               <Button
                 key={page}
                 onClick={()=>{handleCloseNavMenu(page)}}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', fontSize:'12px' }}
               >
                 {page}
               </Button>
@@ -118,7 +118,7 @@ function Navbar() {
           <Box sx={{ flexGrow:0 }}>
             <Tooltip title="CALL US NOW">
                <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
-            ,padding:'5px',width:'190px',mr:'20px'}}>CALL US NOW</Button>
+            ,padding:'5px 20px 5px 20px',mr:'20px'}}>CALL US NOW (+1234567789)</Button>
             </Tooltip>
           </Box>
         </Toolbar>

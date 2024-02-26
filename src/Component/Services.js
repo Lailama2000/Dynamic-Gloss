@@ -3,7 +3,7 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import pic from '../Media/Component 4 – 2.png'
-import { Autoplay,Scrollbar } from 'swiper/modules';
+import { Autoplay,Pagination } from 'swiper/modules';
 import 'swiper/css/scrollbar';
 
 export default function Services() {
@@ -18,7 +18,7 @@ export default function Services() {
     }
   };
   return (
-    <div style={{backgroundColor:'#141414'}}>
+    <div style={{backgroundColor:'#141414',marginBottom:'30px'}}>
         <Box>
         <Container sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'start', alignItems: 'start'}}>
       <Typography sx={{color:'white',fontSize:'25px',marginTop:'80px',paddingLeft:'30px',marginBottom:'30px'}}>
@@ -29,17 +29,17 @@ export default function Services() {
 
       <Container maxWidth='lg'>
       <Swiper
-      modules={[Autoplay,Scrollbar]} 
+      modules={[Autoplay,Pagination]} 
       autoplay={{
        delay: 5000,
        disableOnInteraction: false,
         }}
-        scrollbar={{ draggable: true }}
+        pagination={{ clickable: true }}
         slidesPerView={matches?4:1}
         spaceBetween={50}
         onSwiper={setSwiper}
         onSlideChange={handleSlideChange}
-        style={{ padding: '20px' }}
+        style={{ padding: '20px',paddingBottom:'50px' }}
         className="custom-swiper"
       >
         <SwiperSlide>
@@ -129,11 +129,6 @@ export default function Services() {
         </SwiperSlide>
       </Swiper>
       </Container>
-      {/* <Container sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}>
-      <div className="progress-bar">
-      <div className="progress" style={{ width: `${((activeIndex + 1) / Math.ceil(10 / 4)) * 100}%` }}></div>
-        </div>
-        </Container> */}
     </div>
   )
 }
