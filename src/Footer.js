@@ -12,7 +12,7 @@ export default function Footer() {
       <div style={{position:"absolute",bottom:'0px'}}>
               <Box sx={{padding:'0px',marginTop:'10px'}} >
       <Stack direction={matches?'row' : 'column'} gap={matches?25:2} sx={{marginBottom:'20px'}}>
-   <img src={logo} style={{height:'50px',width:'80px',objectFit:matches?'fill':'contain'}}/>
+   <img src={logo} style={{height:'50px',width:'80px',objectFit:matches?'contain':'contain'}}/>
               <Typography sx={{color:'white',fontSize:'14px',mt:'10px'}}>CopyRight2023, All Rights Reserved</Typography>
               <Typography sx={{color:'white ' ,fontSize:'14px',mt:'10px'}}>
               <Link  onClick={()=>{navigate('/PrivacyPolicy')}}

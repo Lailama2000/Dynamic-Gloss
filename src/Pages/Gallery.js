@@ -17,15 +17,15 @@ export default function Gallery() {
     },[])
   return (
     <div style={{backgroundColor:'#141414',position:'relative'}}>
-      <Box sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',padding:'100px'}}>
-      <Typography sx={{color:'white',fontSize:'30px'}}>
+      <Box sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',paddingTop:'130px',paddingBottom:'70px'}}>
+      <Typography sx={{color:'white',fontSize:'30px'}} className='custom'>
       GALLERY
       </Typography>
       </Box>
 
       <Swiper
     loop={true}
-    allowTouchMove={matches?false:true}
+    allowTouchMove={false}
   modules={[ Navigation,Pagination]}
   centeredSlides={true}
   pagination={{ clickable: true }}
@@ -36,7 +36,7 @@ export default function Gallery() {
   slidesPerView={1}
   spaceBetween={50}
   className="custom-swiper"
-  style={{paddingBottom:'50px'}}
+  style={{paddingBottom:'70px'}}
 >
     <SwiperSlide>
       <Container maxWidth='md' sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
@@ -57,13 +57,13 @@ export default function Gallery() {
       </SwiperSlide>
       </Swiper>
 
-      {matches && <><div className="custom-swiper-prev">
+      <div className="custom-swiper-prev">
         <ArrowLeftIcon
           style={{
             color: 'white',
             fontSize: '70px',
             position: 'absolute',
-            top: '35%',
+            top: matches?'35%':'710px',
             left: '40px',
             zIndex: '1',
             cursor: 'pointer',
@@ -76,13 +76,13 @@ export default function Gallery() {
             color: 'white',
             fontSize: '70px',
             position: 'absolute',
-            top: '35%',
+            top: matches?'35%':'710px',
             right: '40px',
             zIndex: '1',
             cursor: 'pointer',
           }}
         />
-      </div></>}
+      </div>
 
       <Form />
     </div>

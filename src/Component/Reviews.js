@@ -1,4 +1,4 @@
-import { Box, useMediaQuery, Stack, Typography } from '@mui/material'
+import { Box, useMediaQuery, Stack, Typography, Container } from '@mui/material'
 import React from 'react'
 import bg from '../Media/reviews.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,11 +15,14 @@ export default function Reviews() {
 
   return (
     <div style={{backgroundImage: `url(${bg})` ,backgroundSize:'cover',backgroundPosition:'center'
-    ,marginTop:'60px',padding:'50px',position:'relative'}}>
+    ,marginTop:'60px',position:'relative'}}>
         <Stack sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',padding:matches?'60px':'0px 0px 100px 0px'}}>
         <Typography sx={{color:'white',fontSize:'25px',}}>WHAT OUR </Typography>
-<Typography sx={{color:'white',fontSize:'25px',}}>CUSTOMERS SAY</Typography>
+<Typography sx={{color:'white',fontSize:'25px',}} className='custom'>CUSTOMERS SAY</Typography>
 </Stack>
+
+
+<Container maxWidth='lg'>
 <Swiper
 loop={true}
   modules={[Autoplay, Navigation, Pagination]}
@@ -34,11 +37,38 @@ loop={true}
   }}
   pagination={{ clickable: true }}
   slidesPerView={matches?3:1}
-  spaceBetween={50}
-  style={{ padding: matches?'0px 0px 100px 20px':'0px 0px 100px 0px' }}
+  spaceBetween={20}
+  style={{ paddingBottom:'100px' }}
   className="custom-swiper"
 >
-                <SwiperSlide>
+                <SwiperSlide style={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
+      <div class="card-container">
+	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
+    <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
+	<p>“Moe’s attention to detail is
+    unmatched. <br/> In the finished” </p>
+	<p style={{marginTop:'30px'}}>Jesika Lynn - 2/5/2024</p>
+</div>
+</SwiperSlide>
+<SwiperSlide style={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
+      <div class="card-container">
+	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
+    <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
+	<p>“Moe’s attention to detail is
+    unmatched. <br/> In the finished” </p>
+	<p style={{marginTop:'30px'}}>Jesika Lynn - 2/5/2024</p>
+</div>
+</SwiperSlide>
+<SwiperSlide style={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
+      <div class="card-container">
+	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
+    <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
+	<p>“Moe’s attention to detail is
+    unmatched. <br/> In the finished” </p>
+	<p style={{marginTop:'30px'}}>Jesika Lynn - 2/5/2024</p>
+</div>
+</SwiperSlide>
+<SwiperSlide style={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
       <div class="card-container">
 	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
     <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
@@ -48,36 +78,11 @@ loop={true}
 </div>
 </SwiperSlide>
 
-<SwiperSlide>
-      <div class="card-container">
-	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
-    <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
-	<p>“Moe’s attention to detail is
-    unmatched. <br/> In the finished” </p>
-	<p style={{marginTop:'30px'}}>Jesika Lynn - 2/5/2024</p>
-</div>
-</SwiperSlide>
-<SwiperSlide>
-      <div class="card-container">
-	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
-    <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
-	<p>“Moe’s attention to detail is
-    unmatched. <br/> In the finished” </p>
-	<p style={{marginTop:'30px'}}>Jesika Lynn - 2/5/2024</p>
-</div>
-</SwiperSlide>
-         <SwiperSlide>
-      <div class="card-container">
-	<img  src={pic} alt="user" style={{borderRadius:'100%',width:'120px',height:'120px'}}/><br/>
-    <Rating name="read-only" value={5} readOnly sx={{marginTop:'30px'}} />
-	<p>“Moe’s attention to detail is
-    unmatched. <br/> In the finished” </p>
-	<p style={{marginTop:'30px'}}>Jesika Lynn - 2/5/2024</p>
-</div>
-</SwiperSlide>
 </Swiper>
 
-{matches && <><div className="custom-swiper-prev">
+
+      </Container>
+      {matches && <><div className="custom-swiper-prev">
         <ArrowLeftIcon
           style={{
             color: 'white',

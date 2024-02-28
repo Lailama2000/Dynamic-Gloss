@@ -81,12 +81,29 @@ function Navbar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' },'.MuiPaper-root':{
+                  width:'100%',bgcolor:'black',border:'1px solid #C71B1B',mt:'5px'
+                }
               }}
             >
+                 <MenuItem>
+               <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' }
+            }}
+          >
+            <img src={logo} style={{width:'60px',height:'70px',objectFit:'contain'}}/>
+          </Typography>
+
+          </MenuItem>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={()=>{handleCloseNavMenu(page)}}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center" sx={{color:'white'}}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>

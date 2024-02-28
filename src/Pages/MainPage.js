@@ -17,9 +17,10 @@ export default function MainPage() {
     <div style={{backgroundColor:'black'}}>
         <Stack direction='column'>
         <img style={{position:'fixed',zIndex:10,objectFit:'contain',
-    top:'85%',right:matches?'30px':'10px',width:matches?'40px':'30px',height:matches?'40px':'30px',cursor:'pointer'}} src={insta}/>
+    top:'80%',right:matches?'10px':'10px',width:matches?'70px':'45px',height:matches?'55px':'45px',
+    cursor:'pointer'}} src={insta}/>
         <img style={{position:'fixed',zIndex:10,objectFit:'contain',
-    top:'93%',right:matches?'35px':'10px',width:matches?'30px':'30px',height:matches?'25px':'20px',cursor:'pointer'}} src={WhatsAppimage}/>
+    top:matches?'90%':'87%',right:matches?'10px':'12px',width:matches?'70px':'40px',height:matches?'35px':'30px',cursor:'pointer'}} src={WhatsAppimage}/>
     </Stack>
       <Slider />
       <Services />

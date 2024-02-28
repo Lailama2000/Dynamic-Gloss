@@ -12,9 +12,8 @@ export default function PriceList() {
 
   return (
     <div style={{backgroundColor:'#141414'}}>
-        <Box sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',paddingTop:'100px',
-      paddingBottom:'30px'}}>
-      <Typography sx={{color:'white',fontSize:'30px',marginTop:'20px'}}>
+        <Box sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',paddingTop:'130px',paddingBottom:'30px'}}>
+      <Typography sx={{color:'white',fontSize:'30px',marginTop:'20px'}} className='custom'>
       PRICE LIST
       </Typography>
       </Box>

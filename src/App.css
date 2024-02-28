@@ -6,6 +6,13 @@
   url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("truetype");
 }
 
+
+.custom {
+  font-family: 'Pro Racing';
+  src: url('../src/font/ProRacing-7BZOD.otf') format('truetype');
+}
+
+
 *{
   font-family: 'helvetica';
 }
@@ -116,18 +123,28 @@
 
 
 
+
+
+
+
+
+
+
+
+  
+
+
   .card-container {
     background-color: #141414;
     border-radius: 5px;
     color: white;
-    padding-top: 30px;
     position: relative;
     width: 250px;
     text-align: center;
     border: 2px solid #9F0202;
-    padding: 20px;
     min-height: 300px;
     border-radius: 20px;
+    padding: 20px;
   }
   
   @media (max-width: 411px) {
@@ -137,7 +154,7 @@
       color: white;
       padding-top: 30px;
       position: relative;
-      width: 200px;
+      width: 250px;
       text-align: center;
       border: 2px solid #9F0202;
       padding: 20px;

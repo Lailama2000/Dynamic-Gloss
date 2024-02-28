@@ -31,24 +31,23 @@ export default function Slider() {
 const matches = useMediaQuery('(min-width:500px)');
 
   return (
-    <div style={{ minHeight: '500px', position: 'relative',backgroundColor:'black',marginTop:'50px' }}>
+    <div style={{ minHeight: '500px', position: 'relative',backgroundColor:'black',marginTop:matches?'90px':'50px' }}>
       <style>{swiperStyles}</style>
       <Swiper modules={[Autoplay,Navigation]} 
        autoplay={{
-        delay: 5000,
+        delay: 8000,
         disableOnInteraction: false,
       }}
       slidesPerView={1} 
       navigation
       style={{ width: '100%' }}>
         <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, minHeight: '500px'
-       ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%' }}>
-          {/* <img style={{ height: '500px', width: '100%', objectFit: 'cover' }} src={im} /> */}
+       ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%',
+       display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
           <div className='overlay'></div>
-          <Typography sx={{ color: 'white', position:'relative', marginTop: matches?'25%':'80%',
-           marginRight: matches?'53%':'', fontSize: '25px' }}>
-            <Container maxWidth='xs'>Check out our unbeatable prices and offers!
-           </Container>
+          <Container maxWidth='lg' sx={{ display:'flex',ml:matches?'40px':'',flexDirection:'column',marginTop:matches?'15%':'60%',justifyContent:'start',alignItems:'start',zIndex:10}}>
+          <Typography sx={{ color: 'white', fontSize: matches?'30px':'20px' }}>
+          Check out our unbeatable prices and offers!
           </Typography>
           <Button
             sx={{
@@ -56,23 +55,24 @@ const matches = useMediaQuery('(min-width:500px)');
               bgcolor: '#C71B1B',
               '&:hover': { color: 'white', bgcolor: '#C71B1B' },
               padding: '5px',
-              width: '190px',
+              width: '150px',
               position: 'relative',
-              marginTop: '2%',
-              marginLeft: matches?'16vh':'2vh',
+              marginTop: '20px'
             }} onClick={handleClick}
           >
             START NOW
           </Button>
+          </Container>
         </SwiperSlide>
+
+
         <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, minHeight: '500px'
-       ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%' }}>
-          {/* <img style={{ height: '500px', width: '100%', objectFit: 'cover' }} src={im} /> */}
+       ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%',
+       display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
           <div className='overlay'></div>
-          <Typography sx={{ color: 'white', position:'relative', marginTop: matches?'25%':'80%',
-           marginRight: matches?'53%':'', fontSize: '25px' }}>
-            <Container maxWidth='xs'>Check out our unbeatable prices and offers!
-           </Container>
+          <Container maxWidth='lg' sx={{ display:'flex',ml:matches?'40px':'',flexDirection:'column',marginTop:matches?'15%':'60%',justifyContent:'start',alignItems:'start',zIndex:10}}>
+          <Typography sx={{ color: 'white', fontSize: matches?'30px':'20px' }}>
+          Check out our unbeatable prices and offers!
           </Typography>
           <Button
             sx={{
@@ -80,15 +80,16 @@ const matches = useMediaQuery('(min-width:500px)');
               bgcolor: '#C71B1B',
               '&:hover': { color: 'white', bgcolor: '#C71B1B' },
               padding: '5px',
-              width: '190px',
+              width: '150px',
               position: 'relative',
-              marginTop: '2%',
-              marginLeft: matches?'16vh':'2vh',
+              marginTop: '20px'
             }} onClick={handleClick}
           >
             START NOW
           </Button>
+          </Container>
         </SwiperSlide>
+       
       </Swiper>
     </div>
   );
