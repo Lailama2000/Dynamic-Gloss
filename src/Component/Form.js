@@ -78,9 +78,9 @@ export default function Form() {
   return (
     <div style={{backgroundColor:'#141414'}} id='form'>
         <Stack sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',padding:'60px'}}>
-        <Typography sx={{color:'white',fontSize:'25px',}} className='custom'>WANT TO PAMPER YOUR CAR?
+        <Typography sx={{color:'white',fontSize:'25px',fontFamily:'Racing Sans One, sans-serif'}}>WANT TO PAMPER YOUR CAR?
  </Typography>
-<Typography sx={{color:'white',fontSize:'25px',}} className='custom'>TALK TO US!</Typography>
+<Typography sx={{color:'white',fontSize:'25px',fontFamily:'Racing Sans One, sans-serif'}}>TALK TO US!</Typography>
 </Stack>
 <ThemeProvider theme={customTheme(outerTheme)}>
 <Container sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>

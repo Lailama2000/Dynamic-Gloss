@@ -18,7 +18,7 @@ export default function Gallery() {
   return (
     <div style={{backgroundColor:'#141414',position:'relative'}}>
       <Box sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',paddingTop:'130px',paddingBottom:'70px'}}>
-      <Typography sx={{color:'white',fontSize:'30px'}} className='custom'>
+      <Typography sx={{color:'white',fontSize:'30px',fontFamily:'Racing Sans One, sans-serif'}}>
       GALLERY
       </Typography>
       </Box>

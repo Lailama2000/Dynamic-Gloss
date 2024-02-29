@@ -27,7 +27,7 @@ export default function Services() {
     <div style={{backgroundColor:'#141414',marginBottom:'30px',position:'relative'}}>
         <Box>
         <Container sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'start', alignItems: 'start'}}>
-      <Typography sx={{color:'white',fontSize:'25px',marginTop:'80px',marginBottom:'30px'}} className='custom'>
+      <Typography sx={{color:'white',fontSize:'25px',marginTop:'80px',marginBottom:'30px',fontFamily:'Racing Sans One, sans-serif'}}>
       OUR SERVICES
       </Typography>
       </Container>

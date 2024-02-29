@@ -14,7 +14,7 @@ export default function Mission() {
 
 <Container maxWidth='sm' sx={{position:'relative',display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
   <Stack gap={2}>
-      <Typography sx={{color:'white',fontSize:'30px'}} className='custom'>
+      <Typography sx={{color:'white',fontSize:'30px',fontFamily:'Racing Sans One, sans-serif'}}>
       OUR MISSION
       </Typography>
       <Typography sx={{color:'white',fontSize:'15px'}}>

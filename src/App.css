@@ -7,12 +7,6 @@
 }
 
 
-.custom {
-  font-family: 'Pro Racing';
-  src: url('../src/font/ProRacing-7BZOD.otf') format('truetype');
-}
-
-
 *{
   font-family: 'helvetica';
 }

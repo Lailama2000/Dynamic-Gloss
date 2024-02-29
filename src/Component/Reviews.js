@@ -17,8 +17,8 @@ export default function Reviews() {
     <div style={{backgroundImage: `url(${bg})` ,backgroundSize:'cover',backgroundPosition:'center'
     ,marginTop:'60px',position:'relative'}}>
         <Stack sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',padding:matches?'60px':'0px 0px 100px 0px'}}>
-        <Typography sx={{color:'white',fontSize:'25px',}}>WHAT OUR </Typography>
-<Typography sx={{color:'white',fontSize:'25px',}} className='custom'>CUSTOMERS SAY</Typography>
+        <Typography sx={{color:'white',fontSize:'25px',fontFamily:'Racing Sans One, sans-serif'}}>WHAT OUR </Typography>
+<Typography sx={{color:'white',fontSize:'25px',fontFamily:'Racing Sans One, sans-serif'}}>CUSTOMERS SAY</Typography>
 </Stack>
 
 

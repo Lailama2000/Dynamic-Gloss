@@ -1,5 +1,5 @@
 import { Button, Container, Typography, useMediaQuery } from '@mui/material';
-import React, { useEffect } from 'react';
+import React, { useEffect,useRef } from 'react';
 import im from '../Media/imgggg.png';
 import '../App.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -29,9 +29,10 @@ export default function Slider() {
     sectionElement.scrollIntoView({ behavior: 'smooth' });
 };
 const matches = useMediaQuery('(min-width:500px)');
+const windowHeight = useRef(window.innerHeight);
 
   return (
-    <div style={{ minHeight: '500px', position: 'relative',backgroundColor:'black',marginTop:matches?'90px':'50px' }}>
+    <div style={{ height: matches ? windowHeight.current:'500px', position: 'relative',backgroundColor:'black',marginTop:matches?'90px':'50px' }}>
       <style>{swiperStyles}</style>
       <Swiper modules={[Autoplay,Navigation]} 
        autoplay={{
@@ -41,7 +42,7 @@ const matches = useMediaQuery('(min-width:500px)');
       slidesPerView={1} 
       navigation
       style={{ width: '100%' }}>
-        <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, minHeight: '500px'
+        <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, height: matches ? windowHeight.current:'500px'
        ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%',
        display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
           <div className='overlay'></div>
@@ -66,7 +67,7 @@ const matches = useMediaQuery('(min-width:500px)');
         </SwiperSlide>
 
 
-        <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, minHeight: '500px'
+        <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, height: matches ? windowHeight.current:'500px'
        ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%',
        display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
           <div className='overlay'></div>
