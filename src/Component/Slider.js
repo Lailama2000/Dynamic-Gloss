@@ -7,7 +7,7 @@ import 'swiper/css';
 import { Autoplay,Navigation } from 'swiper/modules';
 import 'swiper/css/navigation';
 
-export default function Slider() {
+export default function Slider({sliders}) {
   const swiperStyles = `
   @media (max-width: 500px) {
     .swiper-button-next,
@@ -23,7 +23,7 @@ export default function Slider() {
 `;
   let sectionElement='form';
   useEffect(()=>{    
-     sectionElement = document.getElementById('form');      
+     sectionElement = document.getElementById(sectionElement);      
 },[])
   const handleClick = () => {
     sectionElement.scrollIntoView({ behavior: 'smooth' });
@@ -32,7 +32,7 @@ const matches = useMediaQuery('(min-width:500px)');
 const windowHeight = useRef(window.innerHeight);
 
   return (
-    <div style={{ height: matches ? windowHeight.current:'500px', position: 'relative',backgroundColor:'black',marginTop:matches?'90px':'50px' }}>
+    <div style={{  height: matches?'640px':'500px', position: 'relative',backgroundColor:'black',marginTop:matches?'90px':'50px' }}>
       <style>{swiperStyles}</style>
       <Swiper modules={[Autoplay,Navigation]} 
        autoplay={{
@@ -42,13 +42,14 @@ const windowHeight = useRef(window.innerHeight);
       slidesPerView={1} 
       navigation
       style={{ width: '100%' }}>
-        <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, height: matches ? windowHeight.current:'500px'
+        {sliders.map((s)=><>
+        <SwiperSlide style={{ width: '100%',background: `url(${s.attachment})`, height: matches?'640px':'500px'
        ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%',
        display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
           <div className='overlay'></div>
           <Container maxWidth='lg' sx={{ display:'flex',ml:matches?'40px':'',flexDirection:'column',marginTop:matches?'15%':'60%',justifyContent:'start',alignItems:'start',zIndex:10}}>
           <Typography sx={{ color: 'white', fontSize: matches?'30px':'20px' }}>
-          Check out our unbeatable prices and offers!
+         {s.title}
           </Typography>
           <Button
             sx={{
@@ -65,32 +66,7 @@ const windowHeight = useRef(window.innerHeight);
           </Button>
           </Container>
         </SwiperSlide>
-
-
-        <SwiperSlide style={{ width: '100%',backgroundImage: `url(${im})`, height: matches ? windowHeight.current:'500px'
-       ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%',
-       display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
-          <div className='overlay'></div>
-          <Container maxWidth='lg' sx={{ display:'flex',ml:matches?'40px':'',flexDirection:'column',marginTop:matches?'15%':'60%',justifyContent:'start',alignItems:'start',zIndex:10}}>
-          <Typography sx={{ color: 'white', fontSize: matches?'30px':'20px' }}>
-          Check out our unbeatable prices and offers!
-          </Typography>
-          <Button
-            sx={{
-              color: 'white',
-              bgcolor: '#C71B1B',
-              '&:hover': { color: 'white', bgcolor: '#C71B1B' },
-              padding: '5px',
-              width: '150px',
-              position: 'relative',
-              marginTop: '20px'
-            }} onClick={handleClick}
-          >
-            START NOW
-          </Button>
-          </Container>
-        </SwiperSlide>
-       
+        </>)}
       </Swiper>
     </div>
   );

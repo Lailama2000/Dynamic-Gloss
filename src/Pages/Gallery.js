@@ -1,5 +1,5 @@
 import { Box , Container, Typography, useMediaQuery} from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import im1 from '../Media/im1.png'
 import im2 from '../Media/im2.png'
 import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
@@ -9,11 +9,19 @@ import { Navigation, Pagination } from 'swiper/modules';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import pic from '../Media/Rectangle 122.png'
+import axios from 'axios';
+import LoadingPage from '../Component/LoadingPage';
 
 export default function Gallery() {
+  const [open, setOpen] = useState(true);
+  const [gallery , setGallery] = useState([])
     const matches = useMediaQuery('(min-width:948px)');
     useEffect(()=>{
         window.scrollTo(0,0)
+        axios.get(`${process.env.REACT_APP_API_URL}price-list`).then(res=>{
+          setGallery(res.data.gallery)
+          setOpen(false)
+        })
     },[])
   return (
     <div style={{backgroundColor:'#141414',position:'relative'}}>
@@ -22,7 +30,9 @@ export default function Gallery() {
       GALLERY
       </Typography>
       </Box>
+      {open && <LoadingPage open={open} />}
 
+      {!open && <>
       <Swiper
     loop={true}
     allowTouchMove={false}
@@ -38,25 +48,17 @@ export default function Gallery() {
   className="custom-swiper"
   style={{paddingBottom:'70px'}}
 >
+{gallery.map((g)=>
     <SwiperSlide>
       <Container maxWidth='md' sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
       <ReactCompareSlider style={{height:'450px',width:'90%'}}
-      itemOne={<ReactCompareSliderImage src={im1} alt="Image one" style={{objectFit:'fill'}}/>}
-      itemTwo={<ReactCompareSliderImage src={im2} alt="Image two" style={{objectFit:'fill'}} />}
+      itemOne={<ReactCompareSliderImage src={g.before_image} alt="Image one" style={{objectFit:'fill'}}/>}
+      itemTwo={<ReactCompareSliderImage src={g.after_image} alt="Image two" style={{objectFit:'fill'}} />}
     />
       </Container>
-      </SwiperSlide>
-
-      <SwiperSlide>
-      <Container maxWidth='md' sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
-      <ReactCompareSlider style={{height:'450px',width:'90%'}}
-      itemOne={<ReactCompareSliderImage src={im1} alt="Image one" style={{objectFit:'fill'}}/>}
-      itemTwo={<ReactCompareSliderImage src={pic} alt="Image two" style={{objectFit:'fill'}} />}
-    />
-      </Container>
-      </SwiperSlide>
+      </SwiperSlide>)}
       </Swiper>
-
+    
       <div className="custom-swiper-prev">
         <ArrowLeftIcon
           style={{
@@ -83,7 +85,7 @@ export default function Gallery() {
           }}
         />
       </div>
-
+  </>  }
       <Form />
     </div>
   )

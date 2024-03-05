@@ -2,9 +2,11 @@ import React from 'react'
 import bg from '../Media/m.png'
 import { Button, Container, Stack, Typography,useMediaQuery } from '@mui/material'
 import im from '../Media/IDAsticker-Large-300x192.png'
+import { useNavigate } from 'react-router-dom';
 
-export default function Mission() {
+export default function Mission({mission}) {
   const matches = useMediaQuery('(min-width:1000px)');
+  const navigate = useNavigate()
 
   return (
     <div style={{ minHeight:'450px',backgroundColor:'black'}}>
@@ -18,11 +20,11 @@ export default function Mission() {
       OUR MISSION
       </Typography>
       <Typography sx={{color:'white',fontSize:'15px'}}>
-  At Dynamic Gloss Auto Detailng, our mission is to provide the best prices and best auto detailing services in Cleveland, OH.
-We use only the highest quality products and equipment to ensure your vehicle looks its best.
+ {mission.description}
       </Typography>
       <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
-  ,padding:'5px',width:'190px'}}>VIEW OUR WORK</Button>
+  ,padding:'5px',width:'190px'}}
+  onClick={()=>{navigate('/gallery')}}>{mission.button_text}</Button>
 
             <img src={im} style={{position:'absolute',top:matches?'80%':'300px',right:matches?'8%':' ',height:'100px'}} />
             </Stack>

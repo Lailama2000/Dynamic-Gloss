@@ -1,8 +1,9 @@
 import { Typography, TextField, Grid, Stack, TextareaAutosize, useMediaQuery, Button, Alert, Container } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css'
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
+import axios from 'axios';
 
 export default function Form() {
     const [firstName, setFirstName] = useState('');
@@ -11,6 +12,7 @@ export default function Form() {
     const [email, setemail] = useState('');
     const [alerting,setAlerting]= React.useState(false)
     const [message, setMessage] = useState('');
+    const [id,setId]=useState('form')
     const matches = useMediaQuery('(min-width:879px)');
     const customTheme = (outerTheme) =>
     createTheme({
@@ -75,8 +77,32 @@ export default function Form() {
     
     const outerTheme = useTheme();
 
+    const handleForm =() =>{
+      if(firstName && lastName && email && phone && message){
+        const formData = new FormData();
+        formData.append('first_name', firstName);
+        formData.append('last_name', lastName);
+        formData.append('phone_number', phone);
+        formData.append('email', email);
+        formData.append('service_id', '');
+        formData.append('message', message);
+
+        axios.post(`${process.env.REACT_APP_API_URL}feed`,formData).then(res=>{
+          alert('Message Send Successfully')
+          setFirstName('')
+          setLastName('')
+          setPhone('')
+          setMessage('')
+          setemail('')
+        })
+      }
+      else{
+        setAlerting(true)
+      }
+    }
+
   return (
-    <div style={{backgroundColor:'#141414'}} id='form'>
+    <div style={{backgroundColor:'#141414'}} id={id} >
         <Stack sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center',padding:'60px'}}>
         <Typography sx={{color:'white',fontSize:'25px',fontFamily:'Racing Sans One, sans-serif'}}>WANT TO PAMPER YOUR CAR?
  </Typography>
@@ -166,8 +192,10 @@ export default function Form() {
         style={{ resize: 'none', overflow: 'auto', height:'100px',width:matches?'610px':'299px' }}
         />
         </Grid>
+        {alerting && <Alert severity="error" sx={{marginBottom:'20px',width:matches?'600px':'280px'}}>All fields must be filled.</Alert>}
         <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
-            ,paddingLeft:'20px',pr:'20px',width:matches?'630px':'310px',mb:'30px'}}>SEND</Button>
+            ,paddingLeft:'20px',pr:'20px',width:matches?'630px':'310px',mb:'30px'}}
+            onClick={handleForm}>SEND</Button>
         </Stack>
         </Container>
         </ThemeProvider>

@@ -13,11 +13,14 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from './Media/Group 66.png';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Link } from '@mui/material';
 
 const pages = ['HOME', 'PRICE LIST', 'GALLERY'];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [contact,setContact] = React.useState({})
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
@@ -36,7 +39,11 @@ function Navbar() {
     }
   };
 
-
+  React.useEffect(()=>{
+    axios.get(`${process.env.REACT_APP_API_URL}home`).then(res=>{
+      setContact(res.data.data.general)
+    })
+},[])
   return (
     <AppBar position="fixed" sx={{bgcolor:'#000000',borderBottom:'3px solid #C71B1B'}}>
       <Container maxWidth="xl">
@@ -134,8 +141,10 @@ function Navbar() {
 
           <Box sx={{ flexGrow:0 }}>
             <Tooltip title="CALL US NOW">
+            <Link href={`tel:${contact.phone_number}`} style={{textDecoration: 'none'}}>
                <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
-            ,padding:'5px 20px 5px 20px',mr:'20px'}}>CALL US NOW (+1234567789)</Button>
+            ,padding:'5px 20px 5px 20px',mr:'20px'}}>CALL US NOW {contact.phone_number}</Button>
+            </Link>
             </Tooltip>
           </Box>
         </Toolbar>

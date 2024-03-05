@@ -1,4 +1,4 @@
-import { Box, Container, Typography,useMediaQuery } from '@mui/material'
+import { Box, Container, Stack, Typography,useMediaQuery } from '@mui/material'
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -9,8 +9,9 @@ import 'swiper/css/navigation';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import '../App.css'
+import { useNavigate } from 'react-router-dom';
 
-export default function Services() {
+export default function Services({service}) {
     const [swiper, setSwiper] = React.useState(null);
     const [activeIndex, setActiveIndex] = React.useState(0);
     const matches = useMediaQuery('(min-width:1000px)');
@@ -22,7 +23,7 @@ export default function Services() {
     }
   };
 
- 
+ const navigate = useNavigate()
   return (
     <div style={{backgroundColor:'#141414',marginBottom:'30px',position:'relative'}}>
         <Box>
@@ -51,91 +52,23 @@ export default function Services() {
         style={{paddingBottom:'50px' }}
         className="custom-swiper"
       >
+        {service.map((s)=> <>
         <SwiperSlide>
         <div class="wrapper">
   <div class="card">
     <img
-    src={pic} alt='loading' />
+    src={s.image} alt='loading' />
     <div class="info">
-      <h1>Mountain</h1>
-      <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-      <button>RESTORE YOUR CAR NOW</button>
+      <Stack>
+      <h1>{s.title}</h1>
+      <p>{s.description}</p>
+      </Stack>
+      <button onClick={()=>{navigate('/pricelist')}}>RESTORE YOUR CAR NOW</button>
     </div>
   </div>
 </div>
         </SwiperSlide>
-        <SwiperSlide>
-        <div class="wrapper">
-  <div class="card">
-    <img src={pic} alt='loading' />
-    <div class="info">
-      <h1>Mountain</h1>
-      <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-      <button>RESTORE YOUR CAR NOW</button>
-    </div>
-  </div>
-</div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div class="wrapper">
-  <div class="card">
-    <img src={pic} alt='loading' />
-    <div class="info">
-      <h1>Mountain</h1>
-      <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-      <button>RESTORE YOUR CAR NOW</button>
-    </div>
-  </div>
-</div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div class="wrapper">
-  <div class="card">
-    <img src={pic} alt='loading' />
-    <div class="info">
-      <h1>Mountain</h1>
-      <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-      <button>RESTORE YOUR CAR NOW</button>
-    </div>
-  </div>
-</div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div class="wrapper">
-  <div class="card">
-    <img src={pic} alt='loading' />
-    <div class="info">
-      <h1>Mountain</h1>
-      <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-      <button>RESTORE YOUR CAR NOW</button>
-    </div>
-  </div>
-</div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div class="wrapper">
-  <div class="card">
-    <img src={pic} alt='loading' />
-    <div class="info">
-      <h1>Mountain</h1>
-      <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-      <button>RESTORE YOUR CAR NOW</button>
-    </div>
-  </div>
-</div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div class="wrapper">
-  <div class="card">
-    <img src={pic} alt='loading' />
-    <div class="info">
-      <h1>Mountain</h1>
-      <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-      <button>RESTORE YOUR CAR NOW</button>
-    </div>
-  </div>
-</div>
-        </SwiperSlide>
+        </>)}
       </Swiper>
       </Container>
       {matches && <><div className="custom-swiper-prev">

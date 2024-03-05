@@ -1,12 +1,28 @@
-import { Box, Container, Stack, Typography, useMediaQuery , Button, Divider} from '@mui/material'
+import { Box, Container, Stack, Typography, useMediaQuery , Button, Divider, Link} from '@mui/material'
 import React, { useEffect , useState} from 'react'
 import pic from '../Media/Rectangle 122.png'
 import PriceListForm from '../Component/PriceListForm'
+import axios from 'axios';
+import LoadingPage from '../Component/LoadingPage';
+import Form from '../Component/Form';
 
 export default function PriceList() {
+  const [open, setOpen] = useState(true);
+  const [paint,setPaint] = useState([])
+  const [Interior_detailing,setInterior_detailing] = useState([])
+  const [contact,setContact] = useState({})
+
     const matches = useMediaQuery('(min-width:650px)')
     useEffect(()=>{
       window.scrollTo(0,0)
+      axios.get(`${process.env.REACT_APP_API_URL}price-list`).then(res=>{
+        setPaint(res.data.paint_correction)
+        setInterior_detailing(res.data.Interior_detailing)
+        setOpen(false)
+      })
+      axios.get(`${process.env.REACT_APP_API_URL}home`).then(res=>{
+        setContact(res.data.data.general)
+      })
   },[])
   const [active,setActive] = useState(true)
 
@@ -17,7 +33,7 @@ export default function PriceList() {
       PRICE LIST
       </Typography>
       </Box>
-
+      {open && <LoadingPage open={open} />}
       <Stack
       direction={matches ? 'row' : 'column'}
       gap={matches ? 1 : 3}
@@ -76,106 +92,68 @@ export default function PriceList() {
     </Stack>
 
 
-
+{!open && active &&<>
         <Stack gap={10}>
+        {paint.map((paint)=> <>
         <Container maxWidth='md' >
       <Stack direction={matches?'row':'column'} gap={matches?10:2} >
-        <img src={pic} style={{height:'280px'}}/>
+        <img src={paint.image} style={{height:'280px',width:'300px'}}/>
         <Stack>
         <Typography sx={{color:'white',fontSize:'25px'}}>
-        Paint correction stage 1
+        {paint.title}
         </Typography>
         <Typography sx={{color:'white',fontSize:'15px',mt:'20px'}}>
-        Stage 1 paint correction with a polishing pad remove about 50% of paint issues including swirl marks, water marks and bug guts followed by 3 months sealant to protect your paint ( better than wax ) 
+          {paint.description}
         </Typography>
         <Typography sx={{color:'white',fontSize:'12px',mt:'50px'}}>
         Starting from 
         </Typography>
         <Typography sx={{color:'white',fontSize:'20px',fontWeight:'bold'}}>
-        200$
+        {paint.price}$
         </Typography>
+        <Link href={`tel:${contact.phone_number}`} style={{textDecoration: 'none'}}>
         <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
             ,paddingLeft:'20px',pr:'20px',mt:'20px',width:'150px'}}>
         START NOW
         </Button>
+        </Link>
         </Stack>
       </Stack>
-      </Container>
+      </Container></>)}
+      </Stack>
+    </>}
 
-      <Container maxWidth='md' >
-      <Stack direction={matches?'row':'column'} gap={matches?10:2} >
-        <img src={pic} style={{height:'280px'}}/>
+
+
+    {!open && !active && <Stack gap={10}>
+    {Interior_detailing.map((Interior_detailing)=> <>
+        <Container maxWidth='md'>
+      <Stack direction={matches?'row':'column'} gap={matches?10:2}>
+        <img src={Interior_detailing.image} style={{height:'280px',width:'300px',objectFit:'cover'}}/>
         <Stack>
         <Typography sx={{color:'white',fontSize:'25px'}}>
-        Paint correction stage 1
+        {Interior_detailing.title}
         </Typography>
         <Typography sx={{color:'white',fontSize:'15px',mt:'20px'}}>
-        Stage 1 paint correction with a polishing pad remove about 50% of paint issues including swirl marks, water marks and bug guts followed by 3 months sealant to protect your paint ( better than wax ) 
+          {Interior_detailing.description}
         </Typography>
         <Typography sx={{color:'white',fontSize:'12px',mt:'50px'}}>
         Starting from 
         </Typography>
         <Typography sx={{color:'white',fontSize:'20px',fontWeight:'bold'}}>
-        200$
+        {Interior_detailing.price}$
         </Typography>
+        <Link href={`tel:${contact.phone_number}`} style={{textDecoration: 'none'}}>
         <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
             ,paddingLeft:'20px',pr:'20px',mt:'20px',width:'150px'}}>
         START NOW
         </Button>
+        </Link>
         </Stack>
       </Stack>
-      </Container>
-
-      <Container maxWidth='md' >
-      <Stack direction={matches?'row':'column'} gap={matches?10:2} >
-        <img src={pic} style={{height:'280px'}}/>
-        <Stack>
-        <Typography sx={{color:'white',fontSize:'25px'}}>
-        Paint correction stage 1
-        </Typography>
-        <Typography sx={{color:'white',fontSize:'15px',mt:'20px'}}>
-        Stage 1 paint correction with a polishing pad remove about 50% of paint issues including swirl marks, water marks and bug guts followed by 3 months sealant to protect your paint ( better than wax ) 
-        </Typography>
-        <Typography sx={{color:'white',fontSize:'12px',mt:'50px'}}>
-        Starting from 
-        </Typography>
-        <Typography sx={{color:'white',fontSize:'20px',fontWeight:'bold'}}>
-        200$
-        </Typography>
-        <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
-            ,paddingLeft:'20px',pr:'20px',mt:'20px',width:'150px'}}>
-        START NOW
-        </Button>
-        </Stack>
-      </Stack>
-      </Container>
-
-      <Container maxWidth='md' sx={{mb:'70px'}} >
-      <Stack direction={matches?'row':'column'} gap={matches?10:2} >
-        <img src={pic} style={{height:'280px'}}/>
-        <Stack>
-        <Typography sx={{color:'white',fontSize:'25px'}}>
-        Paint correction stage 1
-        </Typography>
-        <Typography sx={{color:'white',fontSize:'15px',mt:'20px'}}>
-        Stage 1 paint correction with a polishing pad remove about 50% of paint issues including swirl marks, water marks and bug guts followed by 3 months sealant to protect your paint ( better than wax ) 
-        </Typography>
-        <Typography sx={{color:'white',fontSize:'12px',mt:'50px'}}>
-        Starting from 
-        </Typography>
-        <Typography sx={{color:'white',fontSize:'20px',fontWeight:'bold'}}>
-        200$
-        </Typography>
-        <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
-            ,paddingLeft:'20px',pr:'20px',mt:'20px',width:'150px'}}>
-        START NOW
-        </Button>
-        </Stack>
-      </Stack>
-      </Container>
-      </Stack>
-
-      <PriceListForm />
+      </Container></>)}
+      </Stack>}
+      <Form />
     </div>
   )
 }
