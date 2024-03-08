@@ -104,7 +104,7 @@ function Navbar() {
               display: { xs: 'flex', md: 'none' }
             }}
           >
-            <img src={logo} style={{width:'60px',height:'70px',objectFit:'contain'}}/>
+            <img src={logo} style={{objectFit:'cover'}}/>
           </Typography>
 
           </MenuItem>
@@ -127,7 +127,8 @@ function Navbar() {
             }}
           >
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }
+          ,flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
             {pages.map((page) => (
               <Button
                 key={page}

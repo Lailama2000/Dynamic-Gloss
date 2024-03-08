@@ -31,6 +31,12 @@ export default function Slider({sliders}) {
 const matches = useMediaQuery('(min-width:500px)');
 const windowHeight = useRef(window.innerHeight);
 
+function isImage(url) {
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.svg']; 
+
+  const extension = url.substring(url.lastIndexOf('.')).toLowerCase();
+  return imageExtensions.includes(extension);
+}
   return (
     <div style={{  height: matches?'640px':'500px', position: 'relative',backgroundColor:'black',marginTop:matches?'90px':'50px' }}>
       <style>{swiperStyles}</style>
@@ -43,29 +49,36 @@ const windowHeight = useRef(window.innerHeight);
       navigation
       style={{ width: '100%' }}>
         {sliders.map((s)=><>
-        <SwiperSlide style={{ width: '100%',background: `url(${s.attachment})`, height: matches?'640px':'500px'
-       ,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center', width: '100%',
-       display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
-          <div className='overlay'></div>
-          <Container maxWidth='lg' sx={{ display:'flex',ml:matches?'40px':'',flexDirection:'column',marginTop:matches?'15%':'60%',justifyContent:'start',alignItems:'start',zIndex:10}}>
-          <Typography sx={{ color: 'white', fontSize: matches?'30px':'20px' }}>
-         {s.title}
-          </Typography>
-          <Button
-            sx={{
-              color: 'white',
-              bgcolor: '#C71B1B',
-              '&:hover': { color: 'white', bgcolor: '#C71B1B' },
-              padding: '5px',
-              width: '150px',
-              position: 'relative',
-              marginTop: '20px'
-            }} onClick={handleClick}
-          >
-            START NOW
-          </Button>
-          </Container>
-        </SwiperSlide>
+          <SwiperSlide style={{ width: '100%', height: matches ? '640px' : '500px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
+  {isImage(s.attachment) ? (
+    <div style={{ backgroundImage: `url(${s.attachment})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', width: '100%', height: '100%' }}></div>
+  ) : (
+    <div style={{ width: '100%', height: '100%' }}>
+      <video src={s.attachment} style={{ width: '100%', height: '100%' }} autoPlay loop muted></video>
+    </div>
+  )}
+  <div className='overlay'></div>
+  <Container maxWidth='lg' sx={{ position: 'absolute', left: 0, right: 0, top: matches?'55%':'60%', zIndex: 10 }}>
+    <Typography sx={{ color: 'white', fontSize: matches ? '30px' : '20px' }}>
+      {s.title}     
+    </Typography>
+    <Button
+      sx={{
+        color: 'white',
+        bgcolor: '#C71B1B',
+        '&:hover': { color: 'white', bgcolor: '#C71B1B' },
+        padding: '5px',
+        width: '150px',
+        position: 'relative',
+        marginTop: '20px',
+        zIndex: 10
+      }}
+      onClick={handleClick}
+    >
+      START NOW
+    </Button>
+  </Container>
+</SwiperSlide>
         </>)}
       </Swiper>
     </div>

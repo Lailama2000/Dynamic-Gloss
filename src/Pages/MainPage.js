@@ -16,6 +16,7 @@ export default function MainPage() {
   const [mission,setMission] =useState({})
   const [open, setOpen] = useState(true);
   const [contact,setContact] = useState({})
+  const [reviews,setReviews] = useState([])
   const matches = useMediaQuery('(min-width:800px)');
     useEffect(()=>{
       window.scrollTo(0,0)
@@ -24,6 +25,7 @@ export default function MainPage() {
         setService(res.data.data.services)
         setMission(res.data.data.mission)
         setContact(res.data.data.general)
+        setReviews(res.data.data.reviews.result.reviews)
         setOpen(false)
       })
   },[])
@@ -46,7 +48,7 @@ export default function MainPage() {
       <Slider sliders={sliders} />
       <Services service={service} />
       <Mission mission={mission} />
-      <Reviews />
+      <Reviews reviews={reviews} />
       <Form /></>}
     </div>
   )
