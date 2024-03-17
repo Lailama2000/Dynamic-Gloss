@@ -7,7 +7,14 @@ import { useNavigate } from 'react-router-dom';
 export default function Mission({mission}) {
   const matches = useMediaQuery('(min-width:1000px)');
   const navigate = useNavigate()
-
+console.log(mission)
+const handleButton =(m) =>{
+  if (!m){
+  navigate('/gallery')}
+  if(m){
+    window.open(m, '_blank');
+  }
+}
   return (
     <div style={{ minHeight:'450px',backgroundColor:'black'}}>
       <Stack direction={matches?'row':'column'} gap={10}>
@@ -22,9 +29,9 @@ export default function Mission({mission}) {
       <Typography sx={{color:'white',fontSize:'15px'}}>
  {mission.description}
       </Typography>
-      <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
+      {mission.button_text && <Button sx={{color:'white',bgcolor:'#C71B1B','&:hover':{color:'white',bgcolor:'#C71B1B'}
   ,padding:'5px',width:'190px'}}
-  onClick={()=>{navigate('/gallery')}}>{mission.button_text}</Button>
+  onClick={()=>{handleButton(mission.button_action)}}>{mission.button_text}</Button>}
 
             <img src={im} style={{position:'absolute',top:matches?'80%':'300px',right:matches?'8%':' ',height:'100px'}} />
             </Stack>

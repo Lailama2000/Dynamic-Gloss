@@ -51,9 +51,9 @@ export default function Gallery() {
 {gallery.map((g)=>
     <SwiperSlide>
       <Container maxWidth='md' sx={{display:'flex',flexWrap:'wrap',justifyContent:'center',alignItems:'center'}}>
-      <ReactCompareSlider style={{height:'450px',width:'90%'}}
-      itemOne={<ReactCompareSliderImage src={g.before_image} alt="Image one" style={{objectFit:'fill'}}/>}
-      itemTwo={<ReactCompareSliderImage src={g.after_image} alt="Image two" style={{objectFit:'fill'}} />}
+      <ReactCompareSlider style={{height:'480px',width:'90%'}}
+      itemOne={<ReactCompareSliderImage src={g.before_image} alt="Image one" style={{objectFit:'cover'}}/>}
+      itemTwo={<ReactCompareSliderImage src={g.after_image} alt="Image two" style={{objectFit:'cover'}} />}
     />
       </Container>
       </SwiperSlide>)}

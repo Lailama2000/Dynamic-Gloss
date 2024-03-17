@@ -1,6 +1,5 @@
 import { Button, Container, Typography, useMediaQuery } from '@mui/material';
 import React, { useEffect,useRef } from 'react';
-import im from '../Media/imgggg.png';
 import '../App.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -25,11 +24,14 @@ export default function Slider({sliders}) {
   useEffect(()=>{    
      sectionElement = document.getElementById(sectionElement);      
 },[])
-  const handleClick = () => {
-    sectionElement.scrollIntoView({ behavior: 'smooth' });
+  const handleClick = (s) => {
+    if (!s){
+    sectionElement.scrollIntoView({ behavior: 'smooth' });}
+    if(s){
+      window.open(s, '_blank');
+    }
 };
 const matches = useMediaQuery('(min-width:500px)');
-const windowHeight = useRef(window.innerHeight);
 
 function isImage(url) {
   const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.svg']; 
@@ -37,7 +39,8 @@ function isImage(url) {
   const extension = url.substring(url.lastIndexOf('.')).toLowerCase();
   return imageExtensions.includes(extension);
 }
-  return (
+
+return (
     <div style={{  height: matches?'640px':'500px', position: 'relative',backgroundColor:'black',marginTop:matches?'90px':'50px' }}>
       <style>{swiperStyles}</style>
       <Swiper modules={[Autoplay,Navigation]} 
@@ -47,7 +50,8 @@ function isImage(url) {
       }}
       slidesPerView={1} 
       navigation
-      style={{ width: '100%' }}>
+      style={{ width: '100%' }}
+      >
         {sliders.map((s)=><>
           <SwiperSlide style={{ width: '100%', height: matches ? '640px' : '500px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', position: 'relative' }}>
   {isImage(s.attachment) ? (
@@ -62,7 +66,7 @@ function isImage(url) {
     <Typography sx={{ color: 'white', fontSize: matches ? '30px' : '20px' }}>
       {s.title}     
     </Typography>
-    <Button
+   {s.button_text ? <Button
       sx={{
         color: 'white',
         bgcolor: '#C71B1B',
@@ -73,10 +77,10 @@ function isImage(url) {
         marginTop: '20px',
         zIndex: 10
       }}
-      onClick={handleClick}
+      onClick={()=>{handleClick(s.button_action)}}
     >
-      START NOW
-    </Button>
+      {s.button_text}
+    </Button>:null}
   </Container>
 </SwiperSlide>
         </>)}

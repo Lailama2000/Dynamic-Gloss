@@ -35,6 +35,7 @@ export default function Services({service}) {
       </Box>
 <Container maxWidth='lg'>
       <Swiper
+      loop={true}
       modules={[Autoplay,Pagination,Navigation]} 
       autoplay={{
        delay: 5000,

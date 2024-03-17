@@ -32,7 +32,7 @@
   
   .card {
     width: 320px;
-    min-height: 360px;
+    height: 360px;
     padding: 1.5rem;
     background: white;
     position: relative;
@@ -96,7 +96,7 @@
   }
   
   .card .info p {
-    font-size: 15px;
+    font-size: 13px;
   }
   
   .card .info button {
@@ -161,7 +161,35 @@
   
 
 
+  .card-containerrr {
+    background-color: #141414;
+    border-radius: 5px;
+    color: white;
+    position: relative;
+    width: 350px;
+    text-align: center;
+    border: 2px solid #9F0202;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 450px;
+  }
 
+  @media (max-width: 500px) {
+    .card-containerrr {
+      background-color: #141414;
+      border-radius: 5px;
+      color: white;
+      padding-top: 30px;
+      position: relative;
+      width: 250px;
+      text-align: center;
+      border: 2px solid #9F0202;
+      padding: 20px;
+      min-height: 550px;
+      border-radius: 20px;
+    }
+    
+  }
 
 
   .custom-swiper .swiper-pagination-bullet {
